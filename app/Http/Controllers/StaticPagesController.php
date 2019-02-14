@@ -12,4 +12,12 @@ class StaticPagesController extends Controller
     {
         return view('static_pages/home');
     }
+
+    public function login(){
+        return view('static_pages/login');
+    }
+
+    public function signin(){
+        return view('static_pages/signin');
+    }
 }
