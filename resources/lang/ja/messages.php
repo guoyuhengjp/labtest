@@ -21,5 +21,10 @@ return [
     'Name' => '名前',
     'Confirm Password' =>'パスワード確認',
     'Reset Password'=>'パスワード再設定',
-    'Send Password Reset Link' =>'URLを送信'
+    'Send Password Reset Link' =>'URLを送信',
+    'Verify Your Email Address'=>'メールアドレスを認証してください',
+    'A fresh verification link has been sent to your email address.'=>'認証メールは送りました',
+    'Before proceeding, please check your email for a verification link.'=>'メールをチェックしましょう！',
+    'If you did not receive the email'=>'メールが届いていない場合は',
+    'click here to request another'=>'再送信してください'
 ];
