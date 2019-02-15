@@ -2,7 +2,7 @@
   <div class="container">
     <!-- Branding Image -->
     <a class="navbar-brand " href="{{ url('/') }}">
-      LaraBBS
+      二週間課題
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,6 +25,12 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">ログイン</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">新規登録</a></li>
         @else
+          <li class="nav-item">
+            <a class="nav-link mt-1 mr-3 font-weight-bold" href="{{ route('topics.create') }}">
+              <i class="fa fa-plus"></i>
+            </a>
+          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="{{ Auth::user()->avatar }}" class="img-responsive img-circle" width="30px" height="30px">
