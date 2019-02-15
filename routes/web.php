@@ -10,8 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/**
+ * @author kaku.ukowu
+ * @createTime 2019/2/15
+ * @return Route
+ */
+
 Route::get('/', 'PagesController@root')->name('root');
 
 Auth::routes(['verify' => true]);
+
+Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
 

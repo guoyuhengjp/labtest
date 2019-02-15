@@ -22,7 +22,7 @@ body {
     font-family: Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
-//header
+//画面HEADのstyle
 
 .navbar-static-top {
   border-color: #e7e7e7;
@@ -35,14 +35,14 @@ body {
 }
 
 
-/* Sticky footer styles */
+/* footer のstyle */
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
+  /* body の編集 */
   margin-bottom: 60px;
 }
 
@@ -50,7 +50,6 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #000;
 
@@ -69,7 +68,7 @@ body {
   }
 }
 
-/* User register page */
+/* 新規登録画面のcss */
 .register-page {
   img.captcha {
     cursor: pointer;
