@@ -10,9 +10,9 @@
           <h2 class="">
             <i class="far fa-edit"></i>
             @if($topic->id)
-              编辑话题
+              編集投稿
             @else
-              新建话题
+              新規投稿
             @endif
           </h2>
 
@@ -30,12 +30,12 @@
                   @include('shared._error')
 
                   <div class="form-group">
-                    <input class="form-control" type="text" name="title" value="{{ old('title', $topic->title ) }}" placeholder="请填写标题" required />
+                    <input class="form-control" type="text" name="title" value="{{ old('title', $topic->title ) }}" placeholder="タイトルを入力してください" required />
                   </div>
 
                   <div class="form-group">
                     <select class="form-control" name="category_id" required>
-                      <option value="" hidden disabled selected>请选择分类</option>
+                      <option value="" hidden disabled selected>カテゴリー</option>
                       @foreach ($categories as $value)
                         <option value="{{ $value->id }}">{{ $value->name }}</option>
                       @endforeach
@@ -43,7 +43,7 @@
                   </div>
 
                   <div class="form-group">
-                    <textarea name="body" class="form-control" id="editor" rows="6" placeholder="请填入至少三个字符的内容。" required>{{ old('body', $topic->body ) }}</textarea>
+                    <textarea name="body" class="form-control" id="editor" rows="6" placeholder="三文字以上を入力してください" required>{{ old('body', $topic->body ) }}</textarea>
                   </div>
 
                   <div class="well well-sm">
@@ -71,6 +71,16 @@
     $(document).ready(function() {
       var editor = new Simditor({
         textarea: $('#editor'),
+        upload: {
+          url: '{{ route('topics.upload_image') }}',
+          params: {
+            _token: '{{ csrf_token() }}'
+          },
+          fileKey: 'upload_file',
+          connectionCount: 3,
+          leaveConfirm: 'データをアップロード中、少々お待ちください'
+        },
+        pasteImage: true,
       });
     });
   </script>
