@@ -28,12 +28,15 @@ class UserRequest extends FormRequest
             'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
             'email' => 'required|email',
             'introduction' => 'max:80',
+            'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208',
         ];
     }
 
     public function messages()
     {
         return [
+            'avatar.mimes' =>'画像は jpeg, bmp, png, gif でお願いします',
+            'avatar.dimensions' => '画像のサーズは208pxでお願いします',
             'name.unique' => 'ユーザー名を入力してください',
             'name.regex' => 'ユーザー名は英語、数字の組み合わせしてください',
             'name.between' => 'ユーザー名は3文字から25文字まで設定してください',
