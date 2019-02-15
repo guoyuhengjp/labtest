@@ -12,6 +12,12 @@ use App\Http\Requests\UserRequest;
 class UsersController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
+
     /**
      * ユーザー表示
      * @author kaku
@@ -28,10 +34,10 @@ class UsersController extends Controller
      * ユーザー編集
      * @author kaku
      * @createtime 2019.02.15
-     * @$user model
-     * @return view
      */
-    public function edit(User $user){
+    public function edit(User $user)
+    {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
@@ -40,11 +46,11 @@ class UsersController extends Controller
      * ユーザー編集情報保存
      * @author kaku
      * @createtime 2019.02.15
-     * @$user model
-     * @return view
      */
     public function update(UserRequest $request, ImageUploadHandler $uploader, User $user)
     {
+        $this->authorize('update', $user);
+
         $data = $request->all();
 
 
