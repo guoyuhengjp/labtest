@@ -13,27 +13,57 @@ use Auth;
 
 class TopicsController extends Controller
 {
+
+    /**
+     * ユーザーの登録するかどうかの認証
+     * @author kaku
+     * @createtime 2019.02.15
+     */
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    /**
+     * 話題の一覧表示
+     * @author kaku
+     * @createtime 2019.02.15
+     */
 	public function index(Request $request, Topic $topic)
 	{
         $topics = $topic->withOrder($request->order)->paginate(20);
 		return view('topics.index', compact('topics'));
 	}
 
+    /**
+     * 話題の詳細
+     * @author kaku
+     * @createtime 2019.02.15
+     */
     public function show(Topic $topic)
     {
         return view('topics.show', compact('topic'));
     }
+
+
+    /**
+     * 新規投稿
+     * @author kaku
+     * @createtime 2019.02.16
+     */
 
 	public function create(Topic $topic)
 	{
         $categories = Category::all();
         return view('topics.create_and_edit', compact('topic', 'categories'));
 	}
+
+
+    /**
+     * 保存
+     * @author kaku
+     * @createtime 2019.02.16
+     */
 
     public function store(TopicRequest $request, Topic $topic)
     {
@@ -44,19 +74,37 @@ class TopicsController extends Controller
         return redirect()->route('topics.show', $topic->id)->with('success', '投稿成功しました');
     }
 
+    /**
+     * 投稿の編集
+     * @author kaku
+     * @createtime 2019.02.15
+     */
 	public function edit(Topic $topic)
 	{
         $this->authorize('update', $topic);
-		return view('topics.create_and_edit', compact('topic'));
+        $categories = Category::all();
+        return view('topics.create_and_edit', compact('topic', 'categories'));
 	}
+
+    /**
+     * 投稿の更新
+     * @author kaku
+     * @createtime 2019.02.15
+     */
 
 	public function update(TopicRequest $request, Topic $topic)
 	{
 		$this->authorize('update', $topic);
 		$topic->update($request->all());
 
-		return redirect()->route('topics.show', $topic->id)->with('message', 'Updated successfully.');
+		return redirect()->route('topics.show', $topic->id)->with('success', '更新成功！');
 	}
+
+    /**
+     * 投稿の削除
+     * @author kaku
+     * @createtime 2019.02.16
+     */
 
 	public function destroy(Topic $topic)
 	{
@@ -66,19 +114,24 @@ class TopicsController extends Controller
 		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
 	}
 
+    /**
+     * 投稿に写真を追加する
+     * @author kaku
+     * @createtime 2019.02.15
+     */
 	public function uploadImage(Request $request,ImageUploadHandler $uploader)
     {
 
         $data = [
             'success'   => false,
-            'msg'       => '上传失败!',
+            'msg'       => 'アップロードにエラーが発生しました!',
             'file_path' => ''
         ];
 
         if ($file = $request->upload_file) {
-            // 保存图片到本地
+            // 写真の保存をローカルで
             $result = $uploader->save($request->upload_file, 'topics', \Auth::id(), 1024);
-            // 图片保存成功的话
+            // 保存できる場合
             if ($result) {
                 $data['file_path'] = $result['path'];
                 $data['msg']       = "上传成功!";
