@@ -37,15 +37,18 @@ return array(
      *  ]
      */
     'menu' => [
-        '用户与权限' => [
+        'ユーザーアクセス' => [
             'users',
             'roles',
             'permissions',
         ],
-        '内容管理' => [
+        '投稿管理' => [
             'categories',
             'topics',
             'replies',
+        ],
+        'サイト管理' => [
+            'settings.site',
         ],
     ],
 

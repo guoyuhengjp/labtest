@@ -3,8 +3,8 @@
 use Spatie\Permission\Models\Permission;
 
 return [
-    'title'   => '权限',
-    'single'  => '权限',
+    'title'   => 'アクセス権限',
+    'single'  => 'アクセス権限',
     'model'   => Permission::class,
 
     'permission' => function () {
