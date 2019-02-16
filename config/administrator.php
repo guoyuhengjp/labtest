@@ -49,6 +49,7 @@ return array(
         ],
         'サイト管理' => [
             'settings.site',
+            'links',
         ],
     ],
 

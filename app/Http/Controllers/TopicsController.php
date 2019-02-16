@@ -12,6 +12,8 @@ use App\Models\User;
 
 use Auth;
 
+use App\Models\Link;
+
 class TopicsController extends Controller
 {
 
@@ -30,11 +32,13 @@ class TopicsController extends Controller
      * @author kaku
      * @createtime 2019.02.15
      */
-    public function index(Request $request, Topic $topic, User $user)
+    public function index(Request $request, Topic $topic, User $user, Link $link)
     {
         $topics = $topic->withOrder($request->order)->paginate(20);
         $active_users = $user->getActiveUsers();
-        return view('topics.index', compact('topics', 'active_users'));
+        $links = $link->getAllCached();
+
+        return view('topics.index', compact('topics', 'active_users', 'links'));
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Link;
 
 class CategoriesController extends Controller
 {
@@ -15,7 +16,7 @@ class CategoriesController extends Controller
      * @author kaku
      * @createtime 2019.02.16
      */
-    public function show(Category $category, Request $request, Topic $topic, User $user)
+    public function show(Category $category, Request $request, Topic $topic, User $user,Link $link)
     {
         // ID関連している話題、２０行で表示
         $topics = $topic->withOrder($request->order)
@@ -24,6 +25,8 @@ class CategoriesController extends Controller
 
         $active_users = $user->getActiveUsers();
 
-        return view('topics.index', compact('topics', 'category', 'active_users'));
+        $links = $link->getAllCached();
+
+        return view('topics.index', compact('topics', 'category', 'active_users','links'));
     }
 }
