@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 use App\Models\Category;
+use App\Models\User;
 
 use Auth;
 
@@ -29,11 +30,12 @@ class TopicsController extends Controller
      * @author kaku
      * @createtime 2019.02.15
      */
-	public function index(Request $request, Topic $topic)
-	{
+    public function index(Request $request, Topic $topic, User $user)
+    {
         $topics = $topic->withOrder($request->order)->paginate(20);
-		return view('topics.index', compact('topics'));
-	}
+        $active_users = $user->getActiveUsers();
+        return view('topics.index', compact('topics', 'active_users'));
+    }
 
     /**
      * 話題の詳細
