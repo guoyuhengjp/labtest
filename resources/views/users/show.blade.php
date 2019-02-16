@@ -16,7 +16,7 @@
           <h5><strong>sign in</strong></h5>
           <p>{{ $user->created_at->diffForHumans() }}</p>
           <hr>
-          <h5><strong>最后活跃</strong></h5>
+          <h5><strong>最後登録</strong></h5>
           <p title="{{  $user->last_actived_at }}">{{ $user->last_actived_at->diffForHumans() }}</p>
         </div>
       </div>
