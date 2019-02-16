@@ -26,16 +26,16 @@ class TranslateSlug implements ShouldQueue
 
     public function __construct(Topic $topic)
     {
-        // 队列任务构造器中接收了 Eloquent 模型，将会只序列化模型的 ID
+        //  Eloquentを取得
         $this->topic = $topic;
     }
 
     public function handle()
     {
-        // 请求百度 API 接口进行翻译
+        // 翻訳APIにデータを請求
         $slug = app(SlugTranslateHandler::class)->translate($this->topic->title);
 
-        // 为了避免模型监控器死循环调用，我们使用 DB 类直接对数据库进行操作
+        // DBの操作
         \DB::table('topics')->where('id', $this->topic->id)->update(['slug' => $slug]);
     }
 

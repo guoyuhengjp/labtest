@@ -139,7 +139,7 @@ class TopicsController extends Controller
             // 保存できる場合
             if ($result) {
                 $data['file_path'] = $result['path'];
-                $data['msg']       = "上传成功!";
+                $data['msg']       = "アップロード成功した!";
                 $data['success']   = true;
             }
         }
