@@ -12,6 +12,7 @@ use Auth;
 class User extends Authenticatable implements MustVerifyEmailContract
 {
     use Traits\ActiveUserHelper;
+    use Traits\LastActivedAtHelper;
     //全部アクセスの権限を取得
     use HasRoles;
     use MustVerifyEmailTrait;
