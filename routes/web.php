@@ -13,11 +13,11 @@
 
 /**
  * @author kaku.ukowu
- * @createTime 2019/2/15
+ * @since  2019/2/15
  * @return Route
  */
 
-Route::get('/', 'PagesController@root')->name('root');
+Route::get('/', 'TopicsController@index')->name('root');
 
 Auth::routes(['verify' => true]);
 
