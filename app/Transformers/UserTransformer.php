@@ -7,6 +7,12 @@ use League\Fractal\TransformerAbstract;
 
 class UserTransformer extends TransformerAbstract
 {
+    /**
+     *
+     * @author kaku
+     * @createtime 2019.02.18
+     * ログインAPIにより認証情報
+     */
     public function transform(User $user)
     {
         return [

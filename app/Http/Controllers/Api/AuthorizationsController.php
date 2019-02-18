@@ -12,8 +12,16 @@ use Auth;
 
 class AuthorizationsController extends Controller
 {
+
+    /**
+     *
+     * @author kaku
+     * @createtime 2019.02.16
+     * TODO:Weixinのログイン機能
+     */
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
+        //Weixinから認証
         if (!in_array($type, ['weixin'])) {
             return $this->response->errorBadRequest();
         }
@@ -63,6 +71,13 @@ class AuthorizationsController extends Controller
         return $this->response->array(['token' => $user->id]);
     }
 
+
+    /**
+     *
+     * @author kaku
+     * @createtime 2019.02.18
+     * ユーザーログイン機能
+     */
     public function store(AuthorizationRequest $request)
     {
         $username = $request->username;

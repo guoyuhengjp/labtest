@@ -9,17 +9,24 @@ use App\Transformers\UserTransformer;
 
 class UsersController extends Controller
 {
+
+    /**
+     *
+     * @author kaku
+     * @createtime 2019.02.18
+     * 携帯認証APi
+     */
     public function store(UserRequest $request)
     {
         $verifyData = \Cache::get($request->verification_key);
 
         if (!$verifyData) {
-            return $this->response->error('验证码已失效', 422);
+            return $this->response->error('認証コード失効', 422);
         }
 
         if (!hash_equals($verifyData['code'], $request->verification_code)) {
             // 返回401
-            return $this->response->errorUnauthorized('验证码错误');
+            return $this->response->errorUnauthorized('認証コードが間違い');
         }
 
         $user = User::create([
