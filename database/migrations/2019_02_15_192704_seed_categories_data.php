@@ -16,20 +16,20 @@ class SeedCategoriesData extends Migration
         //
         $categories = [
             [
-                'name'        => 'WOW',
-                'description' => '分享创造，分享发现',
+                'name'        => 'java',
+                'description' => 'write less,work more',
             ],
             [
-                'name'        => 'overwatch',
-                'description' => '开发技巧、推荐扩展包等',
+                'name'        => 'php',
+                'description' => 'the best language in the world',
             ],
             [
-                'name'        => 'The hero of storm',
-                'description' => '请保持友善，互帮互助',
+                'name'        => 'js',
+                'description' => 'we can build everything',
             ],
             [
-                'name'        => '公告',
-                'description' => '站点公告',
+                'name'        => 'python',
+                'description' => 'talk is cheap,show me the code',
             ],
         ];
 
