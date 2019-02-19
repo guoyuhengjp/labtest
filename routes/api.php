@@ -44,9 +44,18 @@ $api->version('v1', [
 
         // TOKENがいるAPI
         $api->group(['middleware' => 'api.auth'], function($api) {
+
             // 現在のユーザー情報
             $api->get('user', 'UsersController@me')
                 ->name('api.user.show');
+
+            //ユーザーの写真
+            $api->post('images', 'ImagesController@store')
+                ->name('api.images.store');
+
+            //ユーザーの
+            $api->patch('user', 'UsersController@update')
+                ->name('api.user.update');
         });
     });
 });
