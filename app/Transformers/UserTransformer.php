@@ -11,7 +11,7 @@ class UserTransformer extends TransformerAbstract
      *
      * @author kaku
      * @createtime 2019.02.18
-     * ログインAPIにより認証情報
+     * ログインAPIにより認証情報,ユーザー情報の転換
      */
     public function transform(User $user)
     {

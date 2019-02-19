@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers\Api'
+    'namespace' => 'App\Http\Controllers\Api',
+    'middleware' => 'serializer:array'
 ], function($api) {
 
     // 携帯認証コードAPI
@@ -21,6 +22,7 @@ $api->version('v1', [
         return response('this is version v2');
     });
 
+    //ユーザーのTokenの発行
     $api->post('authorizations', 'AuthorizationsController@store')
         ->name('api.authorizations.store');
 
@@ -39,6 +41,7 @@ $api->version('v1', [
         'expires' => config('api.rate_limits.access.expires'),
     ], function ($api) {
         // TODO::ゲストAPI
+
         // TOKENがいるAPI
         $api->group(['middleware' => 'api.auth'], function($api) {
             // 現在のユーザー情報
