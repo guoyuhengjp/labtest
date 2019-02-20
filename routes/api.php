@@ -42,6 +42,10 @@ $api->version('v1', [
     ], function ($api) {
         // TODO::ゲストAPI
 
+        //カテゴリーリスト
+        $api->get('categories', 'CategoriesController@index')
+            ->name('api.categories.index');
+
         // TOKENがいるAPI
         $api->group(['middleware' => 'api.auth'], function($api) {
 
@@ -53,9 +57,13 @@ $api->version('v1', [
             $api->post('images', 'ImagesController@store')
                 ->name('api.images.store');
 
-            //ユーザーの
+            //ユーザーの情報の更新
             $api->patch('user', 'UsersController@update')
                 ->name('api.user.update');
+
+            //ユーザー新しい投稿
+            $api->post('topics', 'TopicsController@store')
+                ->name('api.topics.store');
         });
     });
 });
