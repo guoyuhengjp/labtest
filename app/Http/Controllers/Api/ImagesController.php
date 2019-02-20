@@ -11,7 +11,13 @@ use App\Http\Requests\Api\ImageRequest;
 
 class ImagesController extends Controller
 {
-    //
+
+    /**
+     *
+     * @author kaku
+     * @since 2019.02.20
+     * ユーザーの画像アップロード
+     */
 
     public function store(ImageRequest $request,ImageUploadHandler $uploader,Image $image)
     {
@@ -27,4 +33,5 @@ class ImagesController extends Controller
 
         return $this->response->item($image, new ImageTransformer())->setStatusCode(201);
     }
+
 }

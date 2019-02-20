@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     /**
      * カテゴリーによる話題の表示
      * @author kaku
-     * @createtime 2019.02.16
+     * @since 2019.02.16
      */
     public function show(Category $category, Request $request, Topic $topic, User $user,Link $link)
     {

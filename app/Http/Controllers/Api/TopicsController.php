@@ -10,7 +10,14 @@ use App\Http\Requests\Api\TopicRequest;
 
 class TopicsController extends Controller
 {
-    //
+
+    /**
+     *
+     * @author kaku
+     * @since 2019.02.20
+     * カテゴリーの一覧リスト
+     */
+
     public function store(TopicRequest $request, Topic $topic)
     {
 

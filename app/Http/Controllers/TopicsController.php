@@ -20,7 +20,7 @@ class TopicsController extends Controller
     /**
      * ユーザーの登録するかどうかの認証
      * @author kaku
-     * @createtime 2019.02.15
+     * @since 2019.02.15
      */
     public function __construct()
     {

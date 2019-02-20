@@ -14,7 +14,7 @@ class UsersController extends Controller
     /**
      *
      * @author kaku
-     * @createtime 2019.02.18
+     * @since 2019.02.18
      * 携帯認証APi
      */
     public function store(UserRequest $request)
@@ -57,7 +57,7 @@ class UsersController extends Controller
     /**
      *
      * @author kaku
-     * @createtime 2019.02.18
+     * @since 2019.02.18
      * ユーザー情報
      */
 

@@ -21,7 +21,7 @@ class UsersController extends Controller
     /**
      * ユーザー表示
      * @author kaku
-     * @createtime 2019.02.15
+     * @since 2019.02.15
      * @$user model
      * @return view
      */
@@ -33,7 +33,7 @@ class UsersController extends Controller
     /**
      * ユーザー編集
      * @author kaku
-     * @createtime 2019.02.15
+     * @since 2019.02.15
      */
     public function edit(User $user)
     {
@@ -45,7 +45,7 @@ class UsersController extends Controller
     /**
      * ユーザー編集情報保存
      * @author kaku
-     * @createtime 2019.02.15
+     * @since 2019.02.15
      */
     public function update(UserRequest $request, ImageUploadHandler $uploader, User $user)
     {

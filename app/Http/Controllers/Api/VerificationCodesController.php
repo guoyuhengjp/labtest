@@ -12,7 +12,7 @@ class VerificationCodesController extends Controller
     /**
      *
      * @author kaku
-     * @createtime 2019.02.18
+     * @since 2019.02.18
      * TODO::中国の携帯メッセージAPIを使っていますので、通信がよくない
      */
     public function store(VerificationCodeRequest $request, EasySms $easySms)

@@ -16,7 +16,7 @@ class AuthorizationsController extends Controller
     /**
      *
      * @author kaku
-     * @createtime 2019.02.16
+     * @since 2019.02.16
      * TODO:Weixinのログイン機能
      */
     public function socialStore($type, SocialAuthorizationRequest $request)
@@ -75,7 +75,7 @@ class AuthorizationsController extends Controller
     /**
      *
      * @author kaku
-     * @createtime 2019.02.18
+     * @since 2019.02.18
      * ユーザーログイン機能
      */
     public function store(AuthorizationRequest $request)
