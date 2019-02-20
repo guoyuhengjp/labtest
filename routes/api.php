@@ -6,7 +6,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => 'serializer:array'
+    'middleware' => ['serializer:array', 'bindings']
 ], function($api) {
 
     // 携帯認証コードAPI
@@ -64,6 +64,10 @@ $api->version('v1', [
             //ユーザー新しい投稿
             $api->post('topics', 'TopicsController@store')
                 ->name('api.topics.store');
+
+            //ユーザー投稿の編集
+            $api->patch('topics/{topic}', 'TopicsController@update')
+                ->name('api.topics.update');
         });
     });
 });
