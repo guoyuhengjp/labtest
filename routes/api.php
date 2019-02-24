@@ -46,6 +46,10 @@ $api->version('v1', [
         $api->get('categories', 'CategoriesController@index')
             ->name('api.categories.index');
 
+        //投稿一覧
+        $api->get('topics', 'TopicsController@index')
+            ->name('api.topics.index');
+
         // TOKENがいるAPI
         $api->group(['middleware' => 'api.auth'], function($api) {
 
@@ -68,6 +72,10 @@ $api->version('v1', [
             //ユーザー投稿の編集
             $api->patch('topics/{topic}', 'TopicsController@update')
                 ->name('api.topics.update');
+
+            //ユーザー投稿の削除
+            $api->delete('topics/{topic}','TopicsController@destroy')
+                ->name('api.topics.destroy');
         });
     });
 });
