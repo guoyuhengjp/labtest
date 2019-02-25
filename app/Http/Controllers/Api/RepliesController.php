@@ -10,7 +10,7 @@ use App\Models\User;
 
 class RepliesController extends Controller
 {
-    //
+
     public function store(ReplyRequest $request,Topic $topic, Reply $reply)
     {
         $reply->content = $request->content;

@@ -102,8 +102,13 @@ $api->version('v1', [
             $api->get('user/notifications', 'NotificationsController@index')
                 ->name('api.user.notifications.index');
 
+            //未開封メッセージの数
             $api->get('user/notifications/stats', 'NotificationsController@stats')
                 ->name('api.user.notifications.stats');
+
+            //未開封メッセージを消える
+            $api->patch('user/read/notifications', 'NotificationsController@read')
+                ->name('api.user.notifications.read');
         });
     });
 });
