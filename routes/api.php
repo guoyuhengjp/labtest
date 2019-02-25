@@ -88,6 +88,11 @@ $api->version('v1', [
             //ユーザーの返信操作
             $api->post('topics/{topic}/replies', 'RepliesController@store')
                 ->name('api.topics.replies.store');
+
+            //返信の削除
+            $api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
+                ->name('api.topics.replies.destroy');
+
         });
     });
 });
