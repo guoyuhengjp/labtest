@@ -101,6 +101,9 @@ $api->version('v1', [
             //返信メッセージの通知
             $api->get('user/notifications', 'NotificationsController@index')
                 ->name('api.user.notifications.index');
+
+            $api->get('user/notifications/stats', 'NotificationsController@stats')
+                ->name('api.user.notifications.stats');
         });
     });
 });
