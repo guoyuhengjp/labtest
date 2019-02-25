@@ -32,4 +32,5 @@ class RepliesController extends Controller
 
         return redirect()->to($reply->topic->link())->with('success', '削除成功！');
     }
+
 }

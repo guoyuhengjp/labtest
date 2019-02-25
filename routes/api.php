@@ -54,6 +54,11 @@ $api->version('v1', [
         $api->get('users/{user}/topics', 'TopicsController@userIndex')
             ->name('api.users.topics.index');
 
+        $api->get('topics/{topic}/replies','RepliesController@index')
+            ->name('api.users.topics.index');
+
+        $api->get('users/{user}/replies', 'RepliesController@userIndex')
+            ->name('api.users.replies.index');
         //投稿の詳細
         $api->get('topics/{topic}', 'TopicsController@show')
             ->name('api.topics.show');
