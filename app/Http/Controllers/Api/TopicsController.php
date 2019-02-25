@@ -6,6 +6,7 @@ use App\Models\Topic;
 use Illuminate\Http\Request;
 use App\Transformers\TopicTransformer;
 use App\Http\Requests\Api\TopicRequest;
+use App\Models\User;
 
 
 class TopicsController extends Controller
@@ -29,6 +30,13 @@ class TopicsController extends Controller
 
     }
 
+    /**
+     *
+     * @author kaku
+     * @since 2019.02.25
+     * 投稿の更新
+     */
+
     public function update(TopicRequest $request, Topic $topic){
 
         $this->authorize('update', $topic);
@@ -38,6 +46,13 @@ class TopicsController extends Controller
 
     }
 
+    /**
+     *
+     * @author kaku
+     * @since 2019.02.20
+     * 投稿の削除
+     */
+
     public function destroy(Topic $topic){
         $this->authorize('destroy',$topic);
 
@@ -45,5 +60,44 @@ class TopicsController extends Controller
 
         return $this->response->noContent();
 
+    }
+
+
+    /**
+     *
+     * @author kaku
+     * @since 2019.02.25
+     * 投稿の一覧
+     */
+
+    public function index(Request $request,Topic $topic)
+    {
+        $query=$topic->query();
+
+        if ($categoryId = $request->category_id) {
+            $query->where('category_id', $categoryId);
+        }
+
+        switch ($request->order) {
+            case 'recent':
+                $query->recent();
+                break;
+
+            default:
+                $query->recentReplied();
+                break;
+        }
+
+        $topics = $query->paginate(20);
+
+        return $this->response->paginator($topics, new TopicTransformer());
+    }
+
+    public function userIndex(User $user, Request $request)
+    {
+        $topics = $user->topics()->recent()
+            ->paginate(20);
+
+        return $this->response->paginator($topics, new TopicTransformer());
     }
 }
