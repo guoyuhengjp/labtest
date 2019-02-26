@@ -109,6 +109,10 @@ $api->version('v1', [
             //未開封メッセージを消える
             $api->patch('user/read/notifications', 'NotificationsController@read')
                 ->name('api.user.notifications.read');
+
+            //現在のユーザーのアクセス権限は
+            $api->get('user/permissions', 'PermissionsController@index')
+                ->name('api.user.permissions.index');
         });
     });
 });
