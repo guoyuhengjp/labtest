@@ -67,6 +67,10 @@ $api->version('v1', [
         $api->get('links', 'LinksController@index')
             ->name('api.links.index');
 
+        //ユーザーランキング
+        $api->get('actived/users', 'UsersController@activedIndex')
+            ->name('api.actived.users.index');
+
         // TOKENがいるAPI
         $api->group(['middleware' => 'api.auth'], function($api) {
 
